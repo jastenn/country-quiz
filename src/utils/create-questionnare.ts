@@ -13,19 +13,23 @@ const questionnaireGenerators = [
   SubregionQuestion,
 ]
 
-export default async function createQuestionnaire(
+type fetchQuestionnaire = () => Promise<Question[]>
+
+export default function createQuestionnaire(
   countryNames: string[]
-): Promise<Question[]> {
-  const questionnaire: Promise<Question>[] = []
+): fetchQuestionnaire {
+  return () => {
+    const questionnaire: Promise<Question>[] = []
 
-  while (questionnaire.length < 10) {
-    const curGenerator =
-      questionnaireGenerators[
-        Math.floor(Math.random() * questionnaireGenerators.length)
-      ]
+    while (questionnaire.length < 10) {
+      const curGenerator =
+        questionnaireGenerators[
+          Math.floor(Math.random() * questionnaireGenerators.length)
+        ]
 
-    questionnaire.push(new curGenerator(countryNames).generate())
+      questionnaire.push(new curGenerator(countryNames).generate())
+    }
+
+    return Promise.all(questionnaire)
   }
-
-  return Promise.all(questionnaire)
 }
