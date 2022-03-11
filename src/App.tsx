@@ -15,7 +15,7 @@ const fetchCountryNames = async () => {
 
 function App() {
   const { data: countryNames } = useQuery("country-names", fetchCountryNames)
-  const { data: questions } = useQuery(
+  const { data: questionnare, status: questionnareStatus } = useQuery(
     "questions",
     createQuestionnaire(countryNames),
     {

@@ -5,17 +5,41 @@ import shuffle from "../../utils/shuffle"
 import { CountryQuestion } from "./country-question"
 
 export class SubregionQuestion extends CountryQuestion {
-  continents = ["Africa", "Americas", "Asia", "Europe", "Oceania"]
-
+  subregions = [
+    "Northern Europe",
+    "South America",
+    "Micronesia",
+    "Western Africa",
+    "Western Asia",
+    "Caribbean",
+    "Southeast Europe",
+    "Eastern Africa",
+    "Southern Africa",
+    "Middle Africa",
+    "Polynesia",
+    "Southern Europe",
+    "North America",
+    "Melanesia",
+    "Eastern Asia",
+    "Eastern Europe",
+    "Southern Asia",
+    "South-Eastern Asia",
+    "Central America",
+    "Central Europe",
+    "Western Europe",
+    "Central Asia",
+    "Australia and New Zealand",
+    "Northern Africa",
+  ]
   async generate(): Promise<Question> {
     const countryDetails = await getCountry(this.curCountry)
 
-    const filler = random(this.continents, 3)
-    this.choices = shuffle([...filler, countryDetails.region])
-    this.answer = countryDetails.region
+    const filler = random(this.subregions, 3, [countryDetails.subregion])
+    this.choices = shuffle([...filler, countryDetails.subregion])
+    this.answer = countryDetails.subregion
 
     return {
-      question: `On which sub continent does ${this.curCountry} belongs?`,
+      question: `On which subregion does ${this.curCountry} belongs?`,
       choices: {
         a: this.choices[0],
         b: this.choices[1],
