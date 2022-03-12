@@ -46,7 +46,7 @@ export class SubregionQuestion extends CountryQuestion {
         c: this.choices[2],
         d: this.choices[3],
       },
-      answer: this.answer,
+      correctAnswer: this.answer,
     }
   }
 

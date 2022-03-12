@@ -9,14 +9,14 @@ export class FlagQuestion extends CountryQuestion {
 
     return {
       question: `Which country does this belong to?`,
-      image: countryDetails.flags[1],
+      image: countryDetails.flags.png,
       choices: {
         a: this.choices[0],
         b: this.choices[1],
         c: this.choices[2],
         d: this.choices[3],
       },
-      answer: this.curCountry,
+      correctAnswer: this.curCountry,
     }
   }
 

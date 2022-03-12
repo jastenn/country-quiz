@@ -1,14 +1,5 @@
-interface Country {
-  flags: [string, string]
-  name: {
-    common: string
-    official: string
-    nativeName: any
-  }
-  capital: [string]
-  region: string
-  subregion: string
-}
+import { Country } from "../types"
+
 export default async function getCountry(
   countryName: string
 ): Promise<Country> {
