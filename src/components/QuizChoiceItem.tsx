@@ -8,7 +8,7 @@ interface QuizChoiceItemProps {
 }
 const btnClass = {
   initial:
-    "ring-2 ring-purple text-purple hover:bg-mustard hover:disabled:bg-transparent hover:text-white hover:disabled:text-purple hover:ring-mustard ring-inset hover:disabled:ring-purple",
+    "ring-2 ring-purple text-purple hover:bg-mustard focus:bg-mustard focus:text-white focus:outline-none focus:ring-0 hover:disabled:bg-transparent hover:text-white hover:disabled:text-purple hover:ring-mustard ring-inset hover:disabled:ring-purple",
   incorrect: "bg-red-400 text-white",
   correct: "bg-emerald-400 text-white",
 }

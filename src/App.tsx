@@ -14,10 +14,6 @@ const fetchCountryNames = async () => {
   return data.map((item: any) => item.name.common)
 }
 
-/**
- * TODO: Persist to local storage the state
- */
-
 function App() {
   const queryClient = useQueryClient()
   const { data: countryNames } = useQuery("country-names", fetchCountryNames)
@@ -33,15 +29,10 @@ function App() {
   const [currentQuestion, setCurrentQuestion] = useState<Question>()
 
   useEffect(() => {
-    console.log("this ran")
     if (questionnaire) setCurrentQuestion(questionnaire[currentQuestionIdx])
   }, [questionnaire, currentQuestionIdx])
-  useEffect(() => {
-    console.log(currentQuestionIdx)
-  }, [currentQuestionIdx])
 
   const handleAnswer = (answer: string) => {
-    console.log("click")
     if (!currentQuestion) return
 
     if (answer === currentQuestion.correctAnswer) {
@@ -61,7 +52,6 @@ function App() {
 
   const handleNext = () => {
     setCurrentQuestionIdx((prevState) => prevState + 1)
-    console.log("next")
   }
 
   const resetQuiz = () => {
