@@ -1,5 +1,6 @@
 import React, { FC } from "react"
 import ImageTrophy from "../assets/images/undraw_winners_ao2o 2.svg"
+import ImageFailed from "../assets/images/undraw_feeling_blue_-4-b7q.svg"
 
 interface QuizResultProps {
   totalQuestions: number
@@ -11,11 +12,13 @@ const QuizResult: FC<QuizResultProps> = ({
   score,
   onReset,
 }) => {
+  const isFailed = totalQuestions * 0.7 > score
+
   return (
     <div className="text-center">
       <img
         className="block w-4/6 mx-auto mb-20"
-        src={ImageTrophy}
+        src={isFailed ? ImageFailed : ImageTrophy}
         alt="Trophy"
       />
       <h2 className="text-4xl font-bold sm:text-5xl">Results</h2>
@@ -23,7 +26,7 @@ const QuizResult: FC<QuizResultProps> = ({
         You got{" "}
         <strong
           className={`text-2xl sm:text-3xl font-bold ${
-            totalQuestions * 0.7 > score ? "text-red-500" : "text-emerald-400"
+            isFailed ? "text-red-500" : "text-emerald-400"
           }`}
         >
           {score}
